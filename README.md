@@ -21,7 +21,7 @@ export SCM_TOKEN_USER="<personal access token user>"
 export SCM_TOKEN_TOKEN="<personal access token value>"
 
 gcloud secrets create pos-git-token-creds --replication-policy="automatic" --project="${PROJECT_ID}"
-echo -n "{\"token\"{{':'}} \"${SCM_TOKEN_TOKEN}\", \"username\"{{':'}} \"${SCM_TOKEN_USER}\"}" | gcloud secrets versions add pos-git-token-creds --project="${PROJECT_ID}" --data-file=-
+echo -n "{\"token\":'${SCM_TOKEN_TOKEN}', \"username\":'${SCM_TOKEN_USER}'}"  | gcloud secrets versions add pos-git-token-creds --project="${PROJECT_ID}" --data-file=-
 ```
 
 # Sample RepoSync
