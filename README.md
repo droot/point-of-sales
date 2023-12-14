@@ -7,14 +7,26 @@ run a Point of Sales application at an edge location.
 # Steps to Use
 
 1. Have a cluster running with ConfigSync enabled
-1. Have a cluster with External Secrets installed and configured to your GCP project (suggest appling the Cluster Trait Repo: )
+1. Have a cluster with External Secrets installed and configured to your GCP project (suggest appling the Cluster Trait Repo: https://gitlab.com/gcp-solutions-public/retail-edge/available-cluster-traits/external-secrets-anthos )
+1. Create a Personal Access Token for your SCM provider
 1. Use a Primary Root Repository for your edge cluster
 1. Setup the Configuration (see /config-manifests) in the namespace of the Package State Repository config files (see below)
 1. Add the Configuration for the repository (sample below)
 
+# Creating GCP Secret
+
+```shell
+export PROJECT_ID="<your gcp project id>"
+export SCM_TOKEN_USER="<personal access token user>"
+export SCM_TOKEN_TOKEN="<personal access token value>"
+
+gcloud secrets create pos-git-token-creds --replication-policy="automatic" --project="${PROJECT_ID}"
+echo -n "{\"token\"{{':'}} \"${SCM_TOKEN_TOKEN}\", \"username\"{{':'}} \"${SCM_TOKEN_USER}\"}" | gcloud secrets versions add pos-git-token-creds --project="${PROJECT_ID}" --data-file=-
+```
+
 # Sample RepoSync
 
-```
+```yaml
 apiVersion: configsync.gke.io/v1beta1
 kind: RepoSync
 metadata:
