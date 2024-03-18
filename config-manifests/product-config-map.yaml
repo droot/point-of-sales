@@ -10,13 +10,13 @@ data:
     items:
       - name: "BigBurger"
         type: "burgers"
-        price: 5.50
+        price: 6.50
         imageUrl: "usr/lib/images/bigburger.png"
         quantity: 200
         labels: [ "retail", "restaurant", "food" ]
       - name: "DoubleBurger"
         type: "burgers"
-        price: 7.20
+        price: 9.25
         imageUrl: "usr/lib/images/burgers.png"
         quantity: 200
         labels: [ "retail", "restaurant", "food" ]

@@ -86,6 +86,8 @@ spec:
     metadata:
       labels:
         app: api-server
+      annotations:
+        config-version: "8"
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
@@ -139,6 +141,8 @@ spec:
     metadata:
       labels:
         app: inventory
+      annotations:
+        config-version: "8"
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
